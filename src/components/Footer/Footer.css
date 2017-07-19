@@ -1,0 +1,9 @@
+.footer {
+  min-height: 20vh;
+  width: 100vw;
+  color: white;
+  background: #37474F;
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+}
