@@ -1,19 +1,20 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
-import './Home.css';
+import AdminLogin from './AdminLogin';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
+import './Admin.css';
 
-class Home extends React.Component {
+class Admin extends React.Component {
   render() {
     return (
-      <div className="home">
+      <div className="admin">
         <Navigation auth={this.props.auth} {...this.props}/>
-        <Image className="home-image" src="" responsive/>
+        <h2>Hello admin</h2>
+        <AdminLogin className="admin-login" url={this.props.url}/>
         <Footer/>
       </div>
     )
   }
 }
 
-export default Home;
+export default Admin;

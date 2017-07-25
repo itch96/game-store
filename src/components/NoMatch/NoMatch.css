@@ -1,0 +1,24 @@
+.no-match > img {
+  margin: 0 auto;
+  display: block;
+  width: 200px; 
+  height: 400px; 
+  margin-top: -5vh;
+}
+
+.no-match > h2 {
+  text-align: center;
+  margin-top: -5vh;
+  padding-bottom: 0px;
+}
+
+.no-match > h4 {
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 20vh;
+}
+
+.no-match > h2 > strong {
+  text-decoration: underline;
+  border: 1px solid black;
+}

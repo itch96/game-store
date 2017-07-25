@@ -2,8 +2,54 @@
   min-height: 20vh;
   width: 100vw;
   color: white;
-  background: #37474F;
+  background: #607D8B;
+  position: inherit;
+  bottom: 0%;
+} 
+
+.fa {
+  padding: 5px;
+}
+
+.footer-heading {
   text-align: center;
-  position: absolute;
-  bottom: 0px;
+}
+
+.footer-address, .footer-phone, .footer-mail {
+  text-align: left;
+}
+
+.fa-facebook, .fa-twitter, .fa-instagram {
+  padding-top: 15px;
+  font-size: 30px;
+  text-shadow: 1px 1px 3px #2c2c2c;
+}
+
+.fa-facebook {
+  color: #3b5998;
+}
+
+.fa-twitter {
+  color: #00aced;
+}
+
+.fa-instagram {
+  color: #e95950;
+}
+
+.fa-facebook:hover, .fa-twitter:hover, .fa-instagram:hover {
+  animation: liftSocial 0.3s ease-in-out forwards;
+}
+
+@keyframes liftSocial {
+  100% {
+    transform: scale(1.1);
+    text-shadow: 2px 2px 3px #2c2c2c;
+  }
+}
+
+.footer-link, .footer-copyright {
+  text-decoration: none;
+  text-align: center;
+  color: white;
 }

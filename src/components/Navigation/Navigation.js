@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './Navigation.css';
 
 class Navigation extends Component {
   login() {
@@ -15,8 +16,8 @@ class Navigation extends Component {
     const { isAuthenticated } = this.props.auth;
 
     return (
-      <div>
-        <Navbar inverse collapseOnSelect>
+      <div className="navigation">
+        <Navbar className="navigation-navbar" inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">game-store</Link>
@@ -24,28 +25,31 @@ class Navigation extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
+            <Nav className="navigation-links">
               <NavItem eventKey={1} href="/browsexbox">
-                <Link to="/browsexbox">XBoX</Link>
+                <Link to="/browsexbox"  className="navigation-links">XBoX</Link>
               </NavItem>
               <NavItem eventKey={2} href="/browseps4">
-                <Link to="/browseps4">PS4</Link>                
+                <Link to="/browseps4" className="navigation-links">PS4</Link>                
               </NavItem>
             </Nav>
             <Nav pullRight>
               {
                 isAuthenticated() ? 
                   (
-                    <NavDropdown eventKey={1} title="Account" id="basic-nav-dropdown">
-                      <MenuItem eventKey={1.1}>
-                        <Link to="/purchases">Purchases</Link>
-                      </MenuItem>
-                      <MenuItem eventKey={1.2}>
-                        <Link to="/settings">Settings</Link>
-                      </MenuItem>
-                      <MenuItem divider />
-                      <MenuItem eventKey={1.3} onClick={this.logout.bind(this)}>Logout</MenuItem>
-                    </NavDropdown>
+                    <Dropdown eventKey={1} id="basic-nav-dropdown" className="navigation-dropdown">
+                      <Dropdown.Toggle className="navigation-dropdown-title">Account</Dropdown.Toggle>
+                      <Dropdown.Menu className="navigation-dropdown-menu">
+                        <Link to="/purchases">
+                          <MenuItem eventKey={1.1} className="navigation-dropdown-links" href="/purchases">Purchases</MenuItem>
+                        </Link>
+                        <Link to="/settings">
+                          <MenuItem eventKey={1.2} className="navigation-dropdown-links" href="/settings">Settings</MenuItem>
+                        </Link>
+                        <MenuItem divider />
+                        <MenuItem eventKey={1.3} className="navigation-dropdown-links" onClick={this.logout.bind(this)}>Logout</MenuItem>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   )
                   :
                   (

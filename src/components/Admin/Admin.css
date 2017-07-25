@@ -1,0 +1,10 @@
+.admin {
+  min-height: 80vh;
+  background: #81D4FA;
+  text-align: center;
+}
+
+.admin-login {
+  margin: 0 auto;
+  display: block;
+}

@@ -1,0 +1,17 @@
+.no-access > img {
+  margin: 0 auto;
+  display: block;
+  width: 200px; 
+  height: 400px; 
+}
+
+.no-access > h2 {
+  text-align: center;
+  margin-top: -5vh;
+  padding-bottom: 20vh; 
+}
+
+.no-access > h2 > strong {
+  text-decoration: underline;
+  border: 1px solid black;
+}

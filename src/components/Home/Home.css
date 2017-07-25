@@ -2,4 +2,11 @@
   background: orange;
   min-height: 80vh;
   text-align: center;
+  display: block;
+}
+
+.home-image {
+  width: 100vw;
+  height: 70vh;
+  background: orange;
 }
