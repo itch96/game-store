@@ -19,6 +19,10 @@
   text-align: left;
 }
 
+.footer-reachus-links {
+  text-align: center;
+}
+
 .fa-facebook, .fa-twitter, .fa-instagram {
   padding-top: 15px;
   font-size: 30px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonToolbar } from 'react-bootstrap';
+import { Button, ButtonToolbar, Col } from 'react-bootstrap';
 import AdminAuth from '../../Auth/AdminAuth';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
@@ -49,14 +49,22 @@ export default class AdminPanel extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="admin-panel">
         <Navigation auth={this.props.auth} {...this.props}/>
         <h2>Admin Panel</h2>
         <ButtonToolbar>
-          <Button onClick={this.handleLogout}>Logout</Button>
-          <Button bsStyle="primary" onClick={this.handleNewGame} className={this.state.newGame ? 'active' : ''}>New Game</Button>
-          <Button bsStyle="primary" onClick={this.handleUpdateGame} className={this.state.updateGame ? 'active' : ''}>Update Game</Button>
-          <Button bsStyle="danger" onClick={this.handleDelete} className={this.state.deleteGame ? 'active' : ''}>Delete Game</Button>
+          <Col xs={6} sm={3} className="admin-panel-button">
+            <Button onClick={this.handleLogout}>Logout</Button>
+          </Col>
+          <Col xs={6} sm={3} className="admin-panel-button">
+            <Button bsStyle="primary" onClick={this.handleNewGame} className={this.state.newGame ? 'active' : ''}>New Game</Button>
+          </Col>
+          <Col xs={6} sm={3} className="admin-panel-button">
+            <Button bsStyle="primary" onClick={this.handleUpdateGame} className={this.state.updateGame ? 'active' : ''}>Update Game</Button>
+          </Col>
+          <Col xs={6} sm={3} className="admin-panel-button">
+            <Button bsStyle="danger" onClick={this.handleDelete} className={this.state.deleteGame ? 'active' : ''}>Delete Game</Button>
+          </Col>
         </ButtonToolbar>
         <br/>
         {

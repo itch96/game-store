@@ -8,7 +8,7 @@ export default class AdminAuth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
-  handleAuthentication(url, state) {
+  handleAuthentication(url, state, callback) {
     let data = {};
     axios.get(url)
     .then((response) => {
@@ -16,7 +16,8 @@ export default class AdminAuth {
       if(state.username === data.username && state.password === data.password) {
         localStorage.setItem('admin_token', 'blah_blah');
       }
-    }).catch(err => {console.log(err);});
+      callback(null, true)
+    }).catch(err => {console.log(err); callback(err, null)});
   }
 
   logout() {

@@ -27,17 +27,17 @@ class Footer extends React.Component {
             </Col>
             <Col xs={12} md={4} className="footer-section">
               <h3 className="footer-heading">Reach Us</h3>
-              <Col xs={4}>
+              <Col xs={4} className="footer-reachus-links">
                 <p className="footer-media-link">
                   <i className="fa fa-facebook" ariaHidden="true"></i>
                 </p>
               </Col>
-              <Col xs={4}>
+              <Col xs={4} className="footer-reachus-links">
                 <p className="footer-media-link">
                   <i className="fa fa-twitter" ariaHidden="true"></i>
                 </p>
               </Col>
-              <Col xs={4}>
+              <Col xs={4} className="footer-reachus-links">
                 <p className="footer-media-link">
                   <i className="fa fa-instagram" ariaHidden="true"></i>
                 </p>

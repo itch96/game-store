@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Form, FormGroup, Col, ControlLabel, FormControl, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import history from '../../history';
 import AdminAuth from '../../Auth/AdminAuth';
@@ -29,40 +29,46 @@ class AdminLogin extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    adminAuth.handleAuthentication(this.props.url, this.state);
-    if(adminAuth.isAuthenticated()) {
-      this.setState({access: true});
-      history.replace('/adminpanel');
-    } else {
-      this.setState({access: false});
-    }
+    adminAuth.handleAuthentication(this.props.url, this.state, (err, response) => {
+      if(err) {
+        console.log(err);
+      }
+      if(response) {
+        if(adminAuth.isAuthenticated()) {
+          this.setState({access: true});
+          history.replace('/adminpanel');
+        } else {
+          this.setState({access: false});
+        }
+      }
+    });
   }
 
   render() {
     return (
-      <div>
+      <div className="admin-login-form">
         <Form horizontal>
           <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} xs={12} sm={2}>
+            <Col componentClass={ControlLabel} xs={11} xsOffset={1} sm={1} smOffset={2} className="admin-login-label">
               UserName
             </Col>
-            <Col xs={10} sm={8}>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={0} className="admin-login-input">
               <FormControl type="text" placeholder="username" onChange={this.handleChange} value={this.state.username}/>
             </Col>
           </FormGroup>
 
           <FormGroup controlId="formHorizontalPassword">
-            <Col componentClass={ControlLabel} xs={12} sm={2}>
+            <Col componentClass={ControlLabel} xs={11} xsOffset={1} sm={1} smOffset={2} className="admin-login-label">
               Password
             </Col>
-            <Col xs={10} sm={8}>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={0} className="admin-login-input">
               <FormControl type="password" placeholder="Password" onChange={this.handleChange} value={this.state.password}/>
             </Col>
           </FormGroup>
 
           <FormGroup>
-            <Col xs={12}>
-              <Button type="submit" onClick={this.handleSubmit}>
+            <Col xs={12} className="admin-login-button">
+              <Button type="submit" onClick={this.handleSubmit} className="admin-login-button">
                 Log In
               </Button>
             </Col>
@@ -70,9 +76,9 @@ class AdminLogin extends React.Component {
         </Form>
         {
           (this.state.access === true) ?
-            <p>Welcome admin</p> :
+            <Alert bsStyle="success" className="admin-login-alert">Welcome Admin</Alert> :
             (this.state.access === false) ?
-              <p>Wrong Username or password</p> :
+              <Alert bsStyle="danger" className="admin-login-alert">Wrong Username or password</Alert> :
               ''
         }
       </div>
