@@ -11,7 +11,7 @@ var app = express();
 var router = express.Router();
 //set our port to either a predetermined port number if you have set 
 //it up, or 3001
-var port = process.env.API_PORT || 3001;
+var port = process.env.PORT || 3001;
 // db config
 mongoose.connect("mongodb://itch96:root@ds147872.mlab.com:47872/game-store");
 //now we should configure the API to use bodyParser and look for 
