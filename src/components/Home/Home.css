@@ -1,12 +1,55 @@
 .home {
-  background: orange;
-  min-height: 80vh;
-  text-align: center;
+  padding-top: 50px; 
+  margin-top: -20px;
   display: block;
+  min-height: 70vh;
+  background: #7b4397;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(45deg, #dc2430, #7b4397);
+  background: -moz-linear-gradient(45deg, #dc2430, #7b4397);
+  background: -o-linear-gradient(45deg, #dc2430, #7b4397);
+  background: linear-gradient(45deg, #dc2430, #7b4397);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
 }
 
-.home-image {
-  width: 100vw;
-  height: 70vh;
-  background: orange;
+.home-pacman, .home-pacman-ghost {
+  padding: 20px;
+}
+
+.home-pacman {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  transform: rotate(90deg);
+}
+
+.home-section {
+  padding-top: 50px;
+}
+
+.home-pacman-ghost {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.home-step {
+  text-align: center;
+}
+
+@media screen and (min-width: 300px) {
+  .home {
+    min-height: 170vh;
+  }
+}
+
+@media screen and (min-width: 370px) {
+  .home {
+    min-height: 130vh;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .home {
+    min-height: 70vh;
+  }
 }

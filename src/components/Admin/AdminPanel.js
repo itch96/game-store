@@ -5,7 +5,7 @@ import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 import NewGameForm from './NewGameForm';
 import SearchGame from './SearchGame';
-import DeleteGameForm from './DeleteGameForm';
+// import DeleteGameForm from './DeleteGameForm';
 
 const adminAuth = new AdminAuth();
 

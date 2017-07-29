@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Thumbnail, Button, Grid } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import history from '../../history';
+// import history from '../../history';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 import './Browse.css';

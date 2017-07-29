@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button, Alert } from 'react-bootstrap';
-import axios from 'axios';
+// import axios from 'axios';
 import history from '../../history';
 import AdminAuth from '../../Auth/AdminAuth';
 

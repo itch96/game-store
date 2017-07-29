@@ -11,13 +11,15 @@ var app = express();
 var router = express.Router();
 //set our port to either a predetermined port number if you have set 
 //it up, or 3001
-var port = process.env.PORT || 3001;
+// var port = process.env.PORT || 3001;
+var port = 3001;
 // db config
 mongoose.connect("mongodb://itch96:root@ds147872.mlab.com:47872/game-store");
 //now we should configure the API to use bodyParser and look for 
 //JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('build'));
 //To prevent errors from Cross Origin Resource Sharing, we will set 
 //our headers to allow CORS with middleware like so:
 app.use((req, res, next) => {
@@ -29,9 +31,13 @@ app.use((req, res, next) => {
  res.setHeader('Cache-Control', 'no-cache');
  next();
 });
-//now we can set the route path & initialize the API
+
+// now we can set route and initiate the api
 router.get('/', function(req, res) {
- res.json({ message: 'API Initialized!'});
+  res.sendFile('index.html', function(err) {
+    if(err) {console.log(err); res.send("ERROR");}
+    else {console.log('index served');}
+  });
 });
 // adding the /admin route to our /api router
 router.route('/admin')
@@ -71,6 +77,7 @@ router.route('/games')
   });
 
   router.route('/games/:game_id')
+    // update the game based on the game_id
     .put(function(req, res) {
       Game.findById(req.params.game_id, function(err, game) {
         if (err) {res.send(err);}
