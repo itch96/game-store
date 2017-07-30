@@ -3,6 +3,9 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import history from './history';
 import App from './App';
 import Callback from './components/Callback/Callback';
+import Plans from './components/Plans/Plans';
+import Buy from './components/Buy/Buy';
+import Sell from './components/Sell/Sell';
 import BrowseXbox from './components/Browse/BrowseXbox';
 import BrowsePs4 from './components/Browse/BrowsePs4';
 import Game from './components/Game/Game';
@@ -30,6 +33,17 @@ export const makeMainRoutes = () => {
         <div>
           <Switch>
             <Route exact path="/" render={(props) => <App auth={auth} {...props} />} />
+            <Route exact path="/plans" render={(props) => <Plans auth={auth} {...props} />} />
+            <Route path="/buy" component={(props) => 
+              auth.isAuthenticated() ?
+                <Buy url="http://localhost:3001/api/buygames" auth={auth} {...props} /> :
+                <NoAccess auth={auth} {...props}/>
+            }/>
+            <Route path="/sell" component={(props) => 
+              auth.isAuthenticated() ?
+                <Sell url="http://localhost:3001/api/sellgames" auth={auth} {...props} /> :
+                <NoAccess auth={auth} {...props}/>
+            }/>
             <Route exact path="/browsexbox" render={(props) => <BrowseXbox url="http://localhost:3001/api/games" auth={auth} {...props} />} />
             <Route path="/browsexbox/:id" component={(props) => 
               auth.isAuthenticated() ?
