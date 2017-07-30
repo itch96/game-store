@@ -12,7 +12,7 @@ var router = express.Router();
 //set our port to either a predetermined port number if you have set 
 //it up, or 3001
 // var port = process.env.PORT || 3001;
-var port = 3001;
+var port = 3001;  
 // db config
 mongoose.connect("mongodb://itch96:root@ds147872.mlab.com:47872/game-store");
 //now we should configure the API to use bodyParser and look for 
@@ -34,10 +34,11 @@ app.use((req, res, next) => {
 
 // now we can set route and initiate the api
 router.get('/', function(req, res) {
-  res.sendFile('index.html', function(err) {
-    if(err) {console.log(err); res.send("ERROR");}
-    else {console.log('index served');}
-  });
+  // res.sendFile('index.html', function(err) {
+  //   if(err) {console.log(err); res.send("ERROR");}
+  //   else {console.log('index served');}
+  // });
+  res.send("Api initiated");
 });
 // adding the /admin route to our /api router
 router.route('/admin')
@@ -78,7 +79,7 @@ router.route('/games')
 
   router.route('/games/:game_id')
     // update the game based on the game_id
-    .put(function(req, res) {
+    .put(function(req, res) { 
       Game.findById(req.params.game_id, function(err, game) {
         if (err) {res.send(err);}
         (req.body.title) ? game.title = req.body.title : null;
