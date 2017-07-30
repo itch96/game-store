@@ -26,21 +26,44 @@ class Navigation extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav className="navigation-links">
-              <NavItem eventKey={1} href="/browsexbox">
-                <Link to="/browsexbox"  className="navigation-links">XBoX</Link>
+              
+              <Dropdown eventKey={1} id="basic-nav-dropdown" className="navigation-dropdown">
+                <Dropdown.Toggle className="navigation-dropdown-title">Buy & Sell</Dropdown.Toggle>
+                <Dropdown.Menu className="navigation-dropdown-menu">
+                  <Link to="/buy"> 
+                    <MenuItem eventKey={1.1} className="navigation-dropdown-links" href="/buy">Buy Game</MenuItem>
+                  </Link>
+                  <Link to="/sell">
+                    <MenuItem eventKey={1.2} className="navigation-dropdown-links" href="/sell">Sell Game</MenuItem>
+                  </Link>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown eventKey={2} id="basic-nav-dropdown" className="navigation-dropdown">
+                <Dropdown.Toggle className="navigation-dropdown-title">Rent</Dropdown.Toggle>
+                <Dropdown.Menu className="navigation-dropdown-menu">
+                  <Link to="/browsexbox"> 
+                    <MenuItem eventKey={2.1} className="navigation-dropdown-links" href="/buy">XBoX</MenuItem>
+                  </Link>
+                  <Link to="/browseps4">
+                    <MenuItem eventKey={2.2} className="navigation-dropdown-links" href="/sell">PS4</MenuItem>
+                  </Link>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <NavItem eventKey={3} href="/plan">
+                <Link to="/plans"  className="navigation-links">Plans</Link>
               </NavItem>
-              <NavItem eventKey={2} href="/browseps4">
-                <Link to="/browseps4" className="navigation-links">PS4</Link>                
-              </NavItem>
+
             </Nav>
             <Nav pullRight>
               {
                 isAuthenticated() ? 
                   (
                     <Dropdown eventKey={1} id="basic-nav-dropdown" className="navigation-dropdown">
-                      <Dropdown.Toggle className="navigation-dropdown-title">Account</Dropdown.Toggle>
+                      <Dropdown.Toggle className="navigation-dropdown-title-account">Account</Dropdown.Toggle>
                       <Dropdown.Menu className="navigation-dropdown-menu">
-                        <Link to="/purchases">
+                        <Link to="/purchases"> 
                           <MenuItem eventKey={1.1} className="navigation-dropdown-links" href="/purchases">Purchases</MenuItem>
                         </Link>
                         <Link to="/settings">

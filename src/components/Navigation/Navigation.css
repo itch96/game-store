@@ -18,11 +18,19 @@ a:hover {
   color: white;
 }
 
-.navigation-dropdown-title, .navigation-dropdown-menu {
+.navigation-dropdown-title {
   color: #9E9E9E !important;
   background: #212121 !important;
   border: none;
-  padding: 10px 5px;  
+  padding: 14px 20px;  
+  font-size: 15px;
+}
+
+.navigation-dropdown-title-account, .navigation-dropdown-menu {
+  color: #9E9E9E !important;
+  background: #212121 !important;
+  border: none;
+  padding: 12px 5px;  
   font-size: 17px;
 }
 
