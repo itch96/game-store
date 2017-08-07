@@ -35,10 +35,6 @@ app.use((req, res, next) => {
 
 // now we can set route and initiate the api
 router.get('/', function(req, res) {
-  // res.sendFile('index.html', function(err) {
-  //   if(err) {console.log(err); res.send("ERROR");}
-  //   else {console.log('index served');}
-  // });
   res.send("Api initiated");
 });
 // adding the /admin route to our /api router
