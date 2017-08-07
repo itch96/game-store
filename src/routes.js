@@ -73,7 +73,7 @@ export const makeMainRoutes = () => {
             }/>
             <Route path="/settings" render={(props) => 
               auth.isAuthenticated() ?
-              <UserSettings auth={auth} {...props} /> :
+              <UserSettings url="http://localhost:3001/api/users" auth={auth} {...props} /> :
               <NoAccess auth={auth} {...props} />
             }/>
             <Route path="/callback" render={(props) => {
