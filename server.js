@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Game = require('./model/games.js');
 var Admin = require('./model/admin.js');
+var User = require('./model/users.js');
 //and create our instances
 var app = express();
 var router = express.Router();
@@ -101,6 +102,44 @@ router.route('/games')
       Game.remove({ _id: req.params.game_id }, function(err, game) {
       if (err) {res.send(err);}
       else {res.json({ message: 'Game has been deleted' });}
+      });
+    });
+
+  router.route('/users')
+    .get(function(req, res) {
+      User.find(function(err, users) {
+        if(err) {res.send(err);}
+        else {res.json(users);}
+      });
+    });
+
+  router.route('/users/:user_id')
+    // update the user data
+    .put(function(req, res) {
+      User.findById(req.params.user_id, function(err, user) {
+        if(err) {res.send(err);}
+        else {
+          req.body.name ? user.name = req.body.name : null;
+          req.body.phone ? user.phone = req.body.phone : null;
+          if(req.body.address) {
+            req.body.address.address1 ? user.address.address1 = req.body.address.address1 : null;
+            req.body.address.address2 ? user.address.address2 = req.body.address.address2 : null;
+            req.body.address.landmark ? user.address.landmark = req.body.address.landmark : null;
+            req.body.address.pincode ? user.address.pincode = req.body.address.pincode : null;
+            req.body.address.city ? user.address.city = req.body.address.city : null;
+            req.body.address.state ? user.address.state = req.body.address.state : null;
+          }
+          if(req.body.bankDetails) {
+            req.body.bankDetails.pan ? user.bankDetails.pan = req.body.bankDetails.pan : null;
+            req.body.bankDetails.bankAccountNumber ? user.bankDetails.bankAccountNumber = req.body.bankDetails.bankAccountNumber : null;
+            req.body.bankDetails.ifsc ? user.bankDetails.ifsc = req.body.bankDetails.ifsc : null;
+            req.body.bankDetails.name ? user.bankDetails.name = req.body.bankDetails.name : null;
+          }
+          user.save(function(err) {
+            if(err) {res.send(err);}
+            else {res.json({message: "User has been updated"});}
+          });
+        }
       });
     });
 
