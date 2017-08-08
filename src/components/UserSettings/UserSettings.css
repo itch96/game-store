@@ -1,0 +1,22 @@
+.settings-body {
+  background: #E0E0E0;
+  margin-top: -20px;
+  padding: 20px 0px;
+}
+
+.settings-head-info, .settings-city-info {
+  background: white;
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px 0px 15px 0px;
+  box-shadow: 0px 2px 5px #2c2c2c;
+}
+
+.settings-phone-input {
+  width: 50%;
+}
+
+.settings-avatar img {
+  margin: 0 auto;
+  text-align: center;
+}
