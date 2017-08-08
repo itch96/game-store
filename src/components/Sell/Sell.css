@@ -1,0 +1,26 @@
+.sell > h1, .sell > h4 {
+  text-align: center;
+}
+
+.sell > h1 {
+  padding-top: 20px;
+}
+
+.sell > h4 {
+  padding-bottom: 40px;
+}
+
+.sell-form-group {
+  padding: 3vh 0px;
+}
+
+.sell-input-amount {
+  text-align: right;
+  width: 100px !important;
+}
+
+.sell-button {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 50px;
+}
