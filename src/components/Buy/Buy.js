@@ -1,15 +1,48 @@
 import React from 'react';
-import { Grid, Col, Thumbnail, Button } from 'react-bootstrap';
+import { Grid, Col, Thumbnail, Button, FormGroup, Checkbox } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import XBoX from '../../assets/xbox-logo.svg';
+import PS4 from '../../assets/playstation-logo.svg';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
-
+import './Buy.css';
 
 class Buy extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
+  
   render() {
     return (
       <div>
         <Navigation auth={this.props.auth} {...this.props} />
+        
+        <div className="buy-filter">
+          <Grid>
+            <Col xs={12} md={6}>
+              <div className="buy-filter-XBoX">
+                <FormGroup>
+                  <Col xs={12}>
+                    <Checkbox className="buy-filter-XBoX-checkbox"><img src={XBoX} alt="XBoX" /></Checkbox>
+                  </Col>
+                </FormGroup>
+              </div>
+            </Col>
+            <Col xs={12} md={6}>
+              <div className="buy-filter-PS4">
+                <FormGroup>
+                  <Col xs={12}>
+                    <Checkbox><img src={PS4} alt="PS4" /></Checkbox>
+                  </Col>
+                </FormGroup>
+              </div>
+            </Col>
+          </Grid>
+        </div>
+
         <div className="buy">
         <Grid>
           <Col xs={12} md={3} className="buy-game-card">
