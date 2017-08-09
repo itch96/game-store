@@ -20,6 +20,7 @@ import AdminAuth from './Auth/AdminAuth';
 
 const auth = new Auth();
 const adminAuth = new AdminAuth();
+const apiURL = "http://localhost:3001/api";
 
 const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
@@ -36,34 +37,34 @@ export const makeMainRoutes = () => {
             <Route exact path="/plans" render={(props) => <Plans auth={auth} {...props} />} />
             <Route path="/buy" component={(props) => 
               auth.isAuthenticated() ?
-                <Buy url="http://localhost:3001/api/buygames" auth={auth} {...props} /> :
+                <Buy url={`${apiURL}/buygames`} auth={auth} {...props} /> :
                 <NoAccess auth={auth} {...props}/>
             }/>
             <Route path="/sell" component={(props) => 
               auth.isAuthenticated() ?
-                <Sell url="http://localhost:3001/api/sellgames" auth={auth} {...props} /> :
+                <Sell url={`${apiURL}/sellgames`} auth={auth} {...props} /> :
                 <NoAccess auth={auth} {...props}/>
             }/>
-            <Route exact path="/browsexbox" render={(props) => <BrowseXbox url="http://localhost:3001/api/games" auth={auth} {...props} />} />
+            <Route exact path="/browsexbox" render={(props) => <BrowseXbox url={`${apiURL}/games`} auth={auth} {...props} />} />
             <Route path="/browsexbox/:id" component={(props) => 
               auth.isAuthenticated() ?
-                <Game id={props.match.params.id} url="http://localhost:3001/api/games" auth={auth} {...props} /> :
+                <Game id={props.match.params.id} url={`${apiURL}/games`} auth={auth} {...props} /> :
                 <NoAccess auth={auth} {...props}/>
             }/>
-            <Route exact path="/browseps4" render={(props) => <BrowsePs4 url="http://localhost:3001/api/games" auth={auth} {...props} />} />
+            <Route exact path="/browseps4" render={(props) => <BrowsePs4 url={`${apiURL}/games`} auth={auth} {...props} />} />
             <Route path="/browseps4/:id" render={(props) => {
               return auth.isAuthenticated() ?
-                <Game id={props.match.params.id} url="http://localhost:3001/api/games" auth={auth} {...props} /> :
+                <Game id={props.match.params.id} url={`${apiURL}/games`} auth={auth} {...props} /> :
                 <NoAccess auth={auth} {...props}/>
             }}/>
             <Route path="/admin" render={(props) => 
               adminAuth.isAuthenticated() ?
               history.replace('/adminpanel') && null:
-              <Admin auth={auth} url="http://localhost:3001/api/admin"/>
+              <Admin auth={auth} url={`${apiURL}/admin`}/>
             }/>
             <Route path="/adminpanel" render={(props) => 
               adminAuth.isAuthenticated() ?
-              <AdminPanel url="http://localhost:3001/api/games" auth={auth} {...props}/> :
+              <AdminPanel url={`${apiURL}/games`} auth={auth} {...props}/> :
               <NoAccess auth={auth} {...props}/>
             }/>
             <Route path="/purchases" render={(props) => 
@@ -73,7 +74,7 @@ export const makeMainRoutes = () => {
             }/>
             <Route path="/settings" render={(props) => 
               auth.isAuthenticated() ?
-              <UserSettings url="http://localhost:3001/api/users" auth={auth} {...props} /> :
+              <UserSettings url={`${apiURL}/users`} auth={auth} {...props} /> :
               <NoAccess auth={auth} {...props} />
             }/>
             <Route path="/callback" render={(props) => {
