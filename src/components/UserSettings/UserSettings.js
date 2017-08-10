@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Image, Form, FormControl, FormGroup, InputGroup, ControlLabel, Grid, Col, Button } from 'react-bootstrap';
+import { Image, Form, FormControl, FormGroup, InputGroup, ControlLabel, Grid, Col, Button, Alert } from 'react-bootstrap';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 import './UserSettings.css';
@@ -16,7 +16,10 @@ class UserSettings extends React.Component {
         address: false,
         city: false
       },
-      message: null
+      message: {
+        title: null,
+        type: null
+      }
     };
 
     this.handleNameEdit = this.handleNameEdit.bind(this);
@@ -158,10 +161,20 @@ class UserSettings extends React.Component {
   handleNameSave() {
     axios.put(`${this.props.url}/${this.state.currentUser._id}`, {name: this.state.currentUser.name})
       .then((response) => {
-        this.setState({message: "Data Updated"});
+        this.setState({
+          message: {
+            title: "Data Updated",
+            type: "success"
+          }
+        });
       })
       .catch((err) => {
-        this.setState({message: "Data not updated! Check console for error."});
+        this.setState({
+          message: {
+            title: "Data not updated! Check console for error.",
+            type: "danger"
+          }
+        });
         console.log(err);
       });
 
@@ -176,10 +189,20 @@ class UserSettings extends React.Component {
     // update the phone number of the user using axios.put
     axios.put(`${this.props.url}/${this.state.currentUser._id}`, {phone: this.state.currentUser.phone})
       .then((response) => {
-        this.setState({message: "Data Updated"});
+        this.setState({
+          message: {
+            title: "Data Updated",
+            type: "success"
+          }
+        });
       })
       .catch((err) => {
-        this.setState({message: "Data not updated! Check console for error."}); 
+        this.setState({
+          message: {
+            title: "Data not updated! Check console for error.",
+            type: "danger"
+          }
+        }); 
         console.log(err);
       });
     
@@ -197,10 +220,20 @@ class UserSettings extends React.Component {
     }
     axios.put(`${this.props.url}/${this.state.currentUser._id}`, {address})
       .then((response) => {
-        this.setState({message: "Data Updated"});
+        this.setState({
+          message: {
+            title: "Data Updated",
+            type: "success"
+          }
+        });
       })
       .catch((err) => {
-        this.setState({message: "Data not updated! Check console for error."});
+        this.setState({
+          message: {
+            title: "Data not updated! Check console for error.",
+            type: "danger"
+          }
+        });
         console.log(err);
       });
 
@@ -217,10 +250,20 @@ class UserSettings extends React.Component {
     }
     axios.put(`${this.props.url}/${this.state.currentUser._id}`, {address})
       .then((response) => {
-        this.setState({message: "Data Updated"});
+        this.setState({
+          message: {
+            title: "Data Updated",
+            type: "success"
+          }
+        });
       })
       .catch((err) => {
-        this.setState({message: "Data not updated! Check console for error."});
+        this.setState({
+          message: {
+            title: "Data not updated! Check console for error.",
+            type: "danger"
+          }
+        });
         console.log(err);
       });
 
@@ -263,7 +306,7 @@ class UserSettings extends React.Component {
           <h2>Your Account Settings</h2>
 
           <Grid>
-            <Col xs={12} className="settings-head-info">
+            <Col xs={12} className="settings-userHead-info">
               <Col xs={4} className="settings-avatar">
                 {this.state.currentUser.avatar ? 
                   <Image src={this.state.currentUser.avatar} alt={this.state.currentUser.email} responsive /> :
@@ -271,18 +314,18 @@ class UserSettings extends React.Component {
                 }
                 <h5>{this.state.currentUser.email ? this.state.currentUser.email : <i className="fa fa-circle-o-notch fa-spin"></i>}</h5>
               </Col>
-              <Col xs={8} className="settings-name">
+              <Col xs={8} className="settings-user">
                 {
                   this.state.editMode.name ?
                   <div>
                     <form>
                       <FormGroup>
                         <Col xs={10}>
-                          <InputGroup>
+                          <InputGroup className="settings-name-input">
                             <FormControl type="text" value={this.state.currentUser.name ? this.state.currentUser.name : ''} onChange={this.handleNameChange}/>
                           </InputGroup>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={2} className="settings-name-button">
                           <Button onClick={this.handleNameSave}>Save</Button>
                         </Col>
                       </FormGroup>
@@ -290,10 +333,10 @@ class UserSettings extends React.Component {
                   </div> 
                   :
                   <div>
-                    <Col xs={10}>
+                    <Col xs={10} className="settings-name-info">
                       <h3>{this.state.currentUser.name ? this.state.currentUser.name : "Add Name"}</h3>
                     </Col>
-                    <Col xs={2}>
+                    <Col xs={2} className="settings-name-button">
                       <Button onClick={this.handleNameEdit}><i className="fa fa-pencil"></i> Edit</Button>
                     </Col>
                   </div>
@@ -309,7 +352,7 @@ class UserSettings extends React.Component {
                             <FormControl type="text" value={this.state.currentUser.phone ? this.state.currentUser.phone : ''} onChange={this.handlePhoneChange}/>
                           </InputGroup>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={2} className="settings-phone-button">
                           <Button onClick={this.handlePhoneSave}>Save</Button>
                         </Col>
                       </FormGroup>
@@ -317,10 +360,10 @@ class UserSettings extends React.Component {
                   </div>
                   :
                   <div>
-                    <Col xs={10}>
+                    <Col xs={10} className="settings-phone-info">
                       {this.state.currentUser.phone ? this.state.currentUser.phone : "Add Phone Number"} 
                     </Col>
-                    <Col xs={2}>
+                    <Col xs={2} className="settings-phone-button">
                       <Button onClick={this.handlePhoneEdit}><i className="fa fa-pencil"></i> Edit</Button>
                     </Col>
                   </div>
@@ -338,7 +381,7 @@ class UserSettings extends React.Component {
                             <FormControl type="text" value={this.state.currentUser.address && this.state.currentUser.address.address2 ? this.state.currentUser.address.address2 : ''} onChange={this.handleAddress2Change} placeholder={this.state.currentUser.address && this.state.currentUser.address.address2 ? '' : 'Colony / Street / Locality'}/>
                           </InputGroup>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={2} className="settings-address-button">
                           <Button onClick={this.handleAddressSave}>Save</Button>
                         </Col>
                       </FormGroup>
@@ -346,10 +389,10 @@ class UserSettings extends React.Component {
                   </div>
                   :
                   <div>
-                    <Col xs={10}>
-                      {this.state.currentUser.address ? `${this.state.currentUser.address.address1}. ${this.state.currentUser.address.address2}` : "Add Address"} 
+                    <Col xs={10} className="settings-address-info">
+                      {this.state.currentUser.address ? <div><p>{this.state.currentUser.address.address1}</p><p>{this.state.currentUser.address.address2}</p></div> : "Add Address"} 
                     </Col>
-                    <Col xs={2}>
+                    <Col xs={2} className="settings-address-button">
                       <Button onClick={this.handleAddressEdit}><i className="fa fa-pencil"></i> Edit</Button>
                     </Col>
                   </div>
@@ -357,8 +400,8 @@ class UserSettings extends React.Component {
               </Col>
             </Col>
 
-            <Col xs={12} className="settings-city-info">
-                <Col xs={4}>Base City</Col>
+            <Col xs={12} className="settings-userCity-info">
+                <Col xs={4} className="settings-sub-title">Base City</Col>
                 <Col xs={8}>
                   {
                     this.state.editMode.city ?
@@ -366,11 +409,11 @@ class UserSettings extends React.Component {
                       <form>
                         <FormGroup>
                           <Col xs={10}>
-                            <InputGroup>
+                            <InputGroup className="settings-city-input">
                               <FormControl type="text" value={this.state.currentUser.address && this.state.currentUser.address.city ? this.state.currentUser.address.city : ''} onChange={this.handleCityChange}/>
                             </InputGroup>
                           </Col>
-                          <Col xs={2}> 
+                          <Col xs={2} className="settings-city-button"> 
                             <Button onClick={this.handleCitySave}>Save</Button>
                           </Col>
                         </FormGroup>
@@ -378,10 +421,10 @@ class UserSettings extends React.Component {
                     </div> 
                     : 
                     <div>
-                      <Col xs={10}>
+                      <Col xs={10} className="settings-city-info">
                         {this.state.currentUser.address && this.state.currentUser.address.city ? this.state.currentUser.address.city : 'Add your City'}
                       </Col>
-                      <Col xs={2}>
+                      <Col xs={2} className="settings-city-button">
                         <Button onClick={this.handleCityEdit}><i className="fa fa-pencil"></i> Edit</Button>
                       </Col>
                     </div>
@@ -391,7 +434,9 @@ class UserSettings extends React.Component {
           </Grid>
           {
             this.state.message ?
-              <h3>{this.state.message}</h3> : ''
+              <Alert bsStyle={this.state.message.type} className="settings-message">
+                <h4>{this.state.message.title}</h4>
+              </Alert> : ''
           }
         </div>
         <Footer/>
