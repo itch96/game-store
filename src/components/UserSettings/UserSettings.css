@@ -4,7 +4,11 @@
   padding: 20px 0px;
 }
 
-.settings-head-info, .settings-city-info {
+.settings-body > h2 {
+  text-align: center;
+}
+
+.settings-userHead-info, .settings-userCity-info {
   background: white;
   text-align: center;
   margin-top: 20px;
@@ -12,11 +16,39 @@
   box-shadow: 0px 2px 5px #2c2c2c;
 }
 
+.settings-avatar img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.settings-name-info, .settings-phone-info, .settings-address-info, .settings-city-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.settings-name-button, .settings-phone-button, .settings-address-button, .settings-city-button {
+  padding: 10px;
+}
+
+.settings-name-input, .settings-phone-input, .settings-address-input, .settings-city-input {
+  margin: 0 auto;
+  padding: 5px 0px;
+}
+
 .settings-phone-input {
   width: 50%;
 }
 
-.settings-avatar img {
-  margin: 0 auto;
+.settings-sub-title {
+  font-size: 20px;
+  color: grey;
+  padding: 10px;
+}
+
+.settings-userCity-info {
+  margin-bottom: 20vh;
+}
+
+.settings-message {
   text-align: center;
 }
