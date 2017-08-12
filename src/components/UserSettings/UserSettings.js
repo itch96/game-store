@@ -367,7 +367,7 @@ class UserSettings extends React.Component {
                       {
                         //<Button onClick={this.handlePhoneEdit}><i className="fa fa-pencil"></i> Edit</Button>
                       }
-                      .
+                      &nbsp;
                     </Col>
                   </div>
                 }
