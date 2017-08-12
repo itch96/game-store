@@ -364,7 +364,10 @@ class UserSettings extends React.Component {
                       {this.state.currentUser.phone ? this.state.currentUser.phone : "Add Phone Number"} 
                     </Col>
                     <Col xs={2} className="settings-phone-button">
-                      <Button onClick={this.handlePhoneEdit}><i className="fa fa-pencil"></i> Edit</Button>
+                      {
+                        //<Button onClick={this.handlePhoneEdit}><i className="fa fa-pencil"></i> Edit</Button>
+                      }
+                      .
                     </Col>
                   </div>
                 }
