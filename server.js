@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Game = require('./model/games.js');
 var Admin = require('./model/admin.js');
-var User = require('./model/users.js');
+var User = require('./model/users.js'); 
 //and create our instances
 var app = express();
 var router = express.Router();
